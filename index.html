@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hz Focus</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="app-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Sound sessions for focus, calm, and getting unstuck</p>
+          <h1 id="app-title">Hz Focus</h1>
+          <p class="intro">
+            Simple frequency-based sound sessions for deep work, short pushes,
+            slow starts, and meditation.
+          </p>
+        </div>
+        <div class="now-panel" aria-live="polite">
+          <div>
+            <span class="panel-label">Now playing</span>
+            <strong id="current-title">Choose a session</strong>
+          </div>
+          <canvas id="wave-canvas" width="520" height="160" aria-hidden="true"></canvas>
+        </div>
+      </section>
+
+      <section class="player-band" aria-label="Playback controls">
+        <button class="primary-control" id="play-toggle" type="button" aria-label="Play selected session">
+          <span id="play-icon" class="play-symbol" aria-hidden="true"></span>
+        </button>
+        <div class="active-session">
+          <span class="panel-label">Selected</span>
+          <strong id="selected-title">Long focus</strong>
+          <span id="selected-detail">45 min - 40 Hz focus tone - soft brown noise</span>
+        </div>
+        <div class="timer" aria-label="Session timer">
+          <span id="time-remaining">45:00</span>
+          <button class="reset-button" id="restart" type="button">Reset timer</button>
+        </div>
+        <label class="volume-control">
+          <span>Volume</span>
+          <input id="volume" type="range" min="0" max="100" value="38">
+        </label>
+      </section>
+
+      <nav class="tabs" aria-label="Session categories">
+        <button class="tab is-active" type="button" data-category="productivity">Productivity</button>
+        <button class="tab" type="button" data-category="meditation">Meditation</button>
+        <button class="tab" type="button" data-category="reset">Reset</button>
+        <button class="tab" type="button" data-category="nature">Nature sleep</button>
+      </nav>
+
+      <section class="session-grid" id="session-grid" aria-label="Sound sessions"></section>
+
+      <section class="custom-panel" aria-labelledby="custom-title">
+        <div>
+          <p class="eyebrow">Fine tune</p>
+          <h2 id="custom-title">Custom Hz session</h2>
+        </div>
+        <div class="custom-controls">
+          <label>
+            <span>Frequency</span>
+            <input id="custom-frequency" type="range" min="20" max="432" value="40">
+            <output id="frequency-output">40 Hz</output>
+          </label>
+          <label>
+            <span>Texture</span>
+            <select id="texture-select">
+              <option value="brown">Brown noise</option>
+              <option value="pink">Pink noise</option>
+              <option value="white">White noise</option>
+              <option value="none">Pure tone</option>
+            </select>
+          </label>
+          <label>
+            <span>Minutes</span>
+            <input id="custom-minutes" type="number" min="1" max="180" value="25">
+          </label>
+          <button id="use-custom" type="button">Use custom</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
